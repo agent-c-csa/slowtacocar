@@ -3,3 +3,14 @@ $enable-gradients: true;
 
 // Bootstrap and its default variables
 @import "bootstrap/scss/bootstrap";
+
+.ig-logo {
+  width: 30px;
+  margin: 15px;
+}
+
+.twitter-logo {
+  width: 40px;
+  margin: 10px;
+  margin-left: 0px;
+}
