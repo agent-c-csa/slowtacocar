@@ -1,0 +1,65 @@
+body {
+  margin: 0;
+  height: 100vh;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Ubuntu,
+    Cantarell, Helvetica Neue;
+  color: rgb(238, 238, 238);
+  background: radial-gradient(circle at bottom, #606265, #111416);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.center {
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.4em;
+}
+
+.lead {
+  font-size: 1.17em;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.link {
+  color: rgb(238, 238, 238);
+  text-decoration: none;
+  padding: 0.6rem;
+  transition: color 0.15s;
+}
+
+.links {
+  display: flex;
+}
+
+.brand {
+  font-size: 1.17em;
+  font-weight: 700;
+}
+
+link:hover {
+  color: rgb(214, 214, 214);
+}
+
+.active {
+  font-weight: 700;
+}
+
+.ig-logo {
+  width: 30px;
+  margin: 15px;
+}
+
+.twitter-logo {
+  width: 40px;
+  margin: 10px;
+  margin-left: 0px;
+}
