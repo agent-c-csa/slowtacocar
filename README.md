@@ -1,2 +1,1 @@
-# slowtacocar
-The homepage for slowtacocar.com
+# bobbygeorge.dev
