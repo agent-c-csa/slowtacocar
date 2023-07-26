@@ -1,0 +1,13 @@
+{
+  "name": "bobbygeorge",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "yarn@3.6.1",
+  "devDependencies": {
+    "tailwindcss": "^3.3.3"
+  },
+  "scripts": {
+    "build": "tailwindcss -i ./css/index.css -o ./public/index.css",
+    "start": "tailwindcss -i ./css/index.css -o ./public/index.css --watch"
+  }
+}
