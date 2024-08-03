@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:2
+        image: cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:3
         ports:
         - containerPort: 80
 ---
