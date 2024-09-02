@@ -41,7 +41,7 @@ pipeline {
         container('docker') {
           sh 'docker login cme-harbor.int.bobbygeorge.dev -u $HARBOR_USR -p $HARBOR_PSW'
           sh 'docker build -t bobbygeorge.dev --cache-to type=inline --cache-from type=registry,ref=cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:$GIT_BRANCH --cache-from type=registry,ref=cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:latest .'
-          sh '[ "$GIT_BRANCH" = "master" ] && docker tag bobbygeorge.dev cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:latest'
+          sh '! [ "$GIT_BRANCH" = "master" ] || docker tag bobbygeorge.dev cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:latest'
           sh 'docker tag bobbygeorge.dev cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:$GIT_BRANCH'
           sh 'docker tag bobbygeorge.dev cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev:$GIT_COMMIT'
           sh 'docker push -a cme-harbor.int.bobbygeorge.dev/bobbygeorge.dev/bobbygeorge.dev'
@@ -57,7 +57,7 @@ pipeline {
       }
       steps {
         container('kubectl') {
-          sh 'TAG=$GIT_COMMIT NAMESPACE=bobbygeorge-dev-$GIT_BRANCH DOMAIN=$GIT_BRANCH.www.bobbygeorge.dev envsubst \'$TAG:$NAMESPACE:$DOMAIN\' < kubernetes.yaml | kubectl apply -f -'
+          sh 'TAG=$GIT_COMMIT NAMESPACE=bobbygeorge-dev-$(echo "$GIT_BRANCH" | tr \'[:upper:]\' \'[:lower:]\' | sed \'s/[^a-z0-9.-]//g\') DOMAIN=$(echo "$GIT_BRANCH" | tr \'[:upper:]\' \'[:lower:]\' | sed \'s/[^a-z0-9.-]//g\').www.bobbygeorge.dev envsubst \'$TAG:$NAMESPACE:$DOMAIN\' < kubernetes.yaml | kubectl apply -f -'
         }
       }
     }
